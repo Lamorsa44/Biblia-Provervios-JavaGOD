@@ -6,6 +6,8 @@ public class Main {
             Cualquier tecla para obtener un proverbio aleatorio.
             proverbios -> Lista completa de proverbios.
             noClean -> Lista no limpia.
+            chapter -> Capitulo
+            description -> Description
             help -> Muestra las instrucciones 😈👍
             exit -> Salir.
             """;
@@ -14,7 +16,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = "";
 
-        ProverbiosService service = new ProverbiosService("./resources/CAP_1");
+        ProverbiosService service = new ProverbiosService("./resources/CAP_1.txt");
 
         System.out.println(INSTRUCTIONS);
         while (!input.matches("exit")) {
@@ -22,6 +24,8 @@ public class Main {
             switch (input) {
                 case "proverbios" -> service.getClean().forEach(System.out::println);
                 case "noClean" -> service.getProverbios().forEach(System.out::println);
+                case "chapter" -> System.out.println(service.getChapter());
+                case "description" -> System.out.println(service.getDescription());
                 case "help" -> System.out.println(INSTRUCTIONS);
                 case "exit" -> System.out.println("Vai");
                 default -> System.out.println(service.getProverbio());
